@@ -1,0 +1,91 @@
+<!-- Header -->
+<div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+  <div>
+    <h1 class="h2 fw-bold mb-1" style="color: #2c3e50;">
+      <i class="bi bi-car-front-fill me-2" style="color: #3498db;"></i>Car Management
+    </h1>
+    <p class="text-muted small mb-0">Manage all vehicles in your fleet</p>
+  </div>
+  <a class="btn fw-600" href="/ui/cars/new" style="background: #3498db; color: white; border: none; border-radius: 8px; padding: 0.6rem 1.5rem;">
+    <i class="bi bi-plus-circle me-2"></i>Add Car
+  </a>
+</div>
+
+<!-- Filter Section -->
+<div class="mb-4">
+  <form class="row g-2" method="get" action="/ui/cars">
+    <div class="col-md-3">
+      <select class="form-select" name="status" style="border-radius: 8px; border: 1px solid #ddd;">
+        <option value="">All Status</option>
+        {{#each statuses}}
+          <option value="{{this}}" {{#ifEquals ../status this}}selected{{/ifEquals}}>{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="col-auto">
+      <button class="btn" type="submit" style="background: #34495e; color: white; border: none; border-radius: 8px;">
+        <i class="bi bi-funnel me-2"></i>Filter
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- Table -->
+<div class="card border-0 shadow-sm" style="border-radius: 12px; overflow: hidden;">
+  <div class="table-responsive">
+    <table class="table table-hover mb-0 align-middle">
+      <thead style="background: linear-gradient(90deg, #f8f9fa 0%, #f0f2f5 100%); border-bottom: 2px solid #dee2e6;">
+        <tr>
+          <th class="fw-600" style="color: #2c3e50;">Car Name</th>
+          <th class="fw-600" style="color: #2c3e50;">Brand</th>
+          <th class="fw-600" style="color: #2c3e50;">Price/Day</th>
+          <th class="fw-600" style="color: #2c3e50;">Status</th>
+          <th class="fw-600" style="color: #2c3e50; width: 200px;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if cars.length}}
+          {{#each cars}}
+            <tr>
+              <td>
+                <span class="fw-500" style="color: #2c3e50;">{{name}}</span>
+              </td>
+              <td>{{brand}}</td>
+              <td>
+                <span class="badge" style="background: #e8f4f8; color: #3498db; font-size: 0.9rem;">\${{pricePerDay}}</span>
+              </td>
+              <td>
+                {{#ifEquals status "AVAILABLE"}}
+                  <span class="badge" style="background: #d5f4e6; color: #27ae60;">✓ Available</span>
+                {{else ifEquals status "RENTED"}}
+                  <span class="badge" style="background: #fdeaa8; color: #f39c12;">◆ Rented</span>
+                {{else}}
+                  <span class="badge" style="background: #fadbd8; color: #e74c3c;">✕ {{status}}</span>
+                {{/ifEquals}}
+              </td>
+              <td>
+                <a class="btn btn-sm btn-outline-primary" href="/ui/cars/{{_id}}/edit" style="border-radius: 6px;">
+                  <i class="bi bi-pencil me-1"></i>Edit
+                </a>
+                <form class="d-inline" method="post" action="/ui/cars/{{_id}}/delete" onsubmit="return confirm('Are you sure?');">
+                  <button class="btn btn-sm btn-outline-danger" style="border-radius: 6px;">
+                    <i class="bi bi-trash me-1"></i>Delete
+                  </button>
+                </form>
+              </td>
+            </tr>
+          {{/each}}
+        {{else}}
+          <tr>
+            <td colspan="5" class="text-center py-5">
+              <div style="color: #95a5a6;">
+                <i class="bi bi-inbox" style="font-size: 2rem; display: block; margin-bottom: 0.5rem;"></i>
+                <p class="mb-0">No cars found. <a href="/ui/cars/new">Add your first car</a></p>
+              </div>
+            </td>
+          </tr>
+        {{/if}}
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<!-- Header -->
+<div class="mb-4 pb-3 border-bottom">
+  <h1 class="h2 fw-bold" style="color: #2c3e50;">
+    <i class="bi bi-plus-circle me-2" style="color: #f39c12;"></i>Add New User
+  </h1>
+  <p class="text-muted small mb-0">Create a new system user</p>
+</div>
+
+<!-- Form Card -->
+<div class="row justify-content-center">
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm" style="border-radius: 12px;">
+      <div class="card-body p-4">
+        <form method="post" action="/ui/users">
+          <div class="mb-4">
+            <label class="form-label fw-500" style="color: #2c3e50;">Full Name</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light border-0">
+                <i class="bi bi-person" style="color: #f39c12;"></i>
+              </span>
+              <input class="form-control border-0 bg-light" name="fullName" placeholder="e.g., John Doe" value="{{form.fullName}}" style="border-radius: 0 8px 8px 0;" required />
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-500" style="color: #2c3e50;">Email</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light border-0">
+                <i class="bi bi-envelope" style="color: #f39c12;"></i>
+              </span>
+              <input class="form-control border-0 bg-light" name="email" type="email" placeholder="e.g., john@example.com" value="{{form.email}}" style="border-radius: 0 8px 8px 0;" required />
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-500" style="color: #2c3e50;">Phone</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light border-0">
+                <i class="bi bi-telephone" style="color: #f39c12;"></i>
+              </span>
+              <input class="form-control border-0 bg-light" name="phone" placeholder="e.g., +1 234 567 8900" value="{{form.phone}}" style="border-radius: 0 8px 8px 0;" required />
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-500" style="color: #2c3e50;">Role</label>
+            <select class="form-select" name="role" style="border-radius: 8px; border: 1px solid #ddd;">
+              {{#each roles}}
+                <option value="{{this}}">{{this}}</option>
+              {{/each}}
+            </select>
+          </div>
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a class="btn" href="/ui/users" style="background: #ecf0f1; color: #2c3e50; border: none; border-radius: 8px; padding: 0.6rem 1.5rem;">
+              <i class="bi bi-x-circle me-2"></i>Cancel
+            </a>
+            <button class="btn" type="submit" style="background: #f39c12; color: white; border: none; border-radius: 8px; padding: 0.6rem 1.5rem;">
+              <i class="bi bi-plus-circle me-2"></i>Create User
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

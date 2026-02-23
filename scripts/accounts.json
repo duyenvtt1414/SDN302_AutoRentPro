@@ -1,0 +1,37 @@
+[
+  {
+    "fullName": "Admin User",
+    "email": "admin@gmail.com",
+    "phone": "0123456789",
+    "password": "123456",
+    "role": "ADMIN"
+  },
+  {
+    "fullName": "Alice Johnson",
+    "email": "alice@gmail.com",
+    "phone": "0987654321",
+    "password": "123456",
+    "role": "CUSTOMER"
+  },
+  {
+    "fullName": "Bob Smith",
+    "email": "bob@gmail.com",
+    "phone": "0912345678",
+    "password": "123456",
+    "role": "CUSTOMER"
+  },
+  {
+    "fullName": "Charlie Brown",
+    "email": "charlie@gmail.com",
+    "phone": "0934567890",
+    "password": "123456",
+    "role": "CUSTOMER"
+  },
+  {
+    "fullName": "Diana Prince",
+    "email": "diana@gmail.com",
+    "phone": "0956789012",
+    "password": "123456",
+    "role": "OWNER"
+  }
+]

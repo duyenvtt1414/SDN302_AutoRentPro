@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Honda City",
+    "brand": "Honda",
+    "pricePerDay": 550000,
+    "status": "AVAILABLE"
+  },
+  {
+    "name": "Toyota Vios",
+    "brand": "Toyota",
+    "pricePerDay": 600000,
+    "status": "AVAILABLE"
+  },
+  {
+    "name": "Hyundai i10",
+    "brand": "Hyundai",
+    "pricePerDay": 480000,
+    "status": "AVAILABLE"
+  },
+  {
+    "name": "Ford EcoSport",
+    "brand": "Ford",
+    "pricePerDay": 750000,
+    "status": "AVAILABLE"
+  },
+  {
+    "name": "Mazda 3",
+    "brand": "Mazda",
+    "pricePerDay": 680000,
+    "status": "UNAVAILABLE"
+  },
+  {
+    "name": "BMW X5",
+    "brand": "BMW",
+    "pricePerDay": 1500000,
+    "status": "AVAILABLE"
+  },
+  {
+    "name": "Audi A4",
+    "brand": "Audi",
+    "pricePerDay": 1200000,
+    "status": "AVAILABLE"
+  },
+  {
+    "name": "Mercedes GLC",
+    "brand": "Mercedes",
+    "pricePerDay": 1800000,
+    "status": "MAINTENANCE"
+  }
+]

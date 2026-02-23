@@ -1,0 +1,77 @@
+<!-- Header -->
+<div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+  <div>
+    <h1 class="h2 fw-bold mb-1" style="color: #2c3e50;">
+      <i class="bi bi-calendar-check-fill me-2" style="color: #27ae60;"></i>Booking Management
+    </h1>
+    <p class="text-muted small mb-0">Monitor and manage all bookings</p>
+  </div>
+  <a href="/ui/bookings/new" class="btn fw-600" style="background: #27ae60; color: white; border: none; border-radius: 8px; padding: 0.6rem 1.5rem;">
+    <i class="bi bi-plus-circle me-2"></i>Create Booking
+  </a>
+</div>
+
+<!-- Table -->
+<div class="card border-0 shadow-sm" style="border-radius: 12px; overflow: hidden;">
+  <div class="table-responsive">
+    <table class="table table-hover mb-0 align-middle">
+      <thead style="background: linear-gradient(90deg, #f8f9fa 0%, #f0f2f5 100%); border-bottom: 2px solid #dee2e6;">
+        <tr>
+          <th class="fw-600" style="color: #2c3e50;">Customer</th>
+          <th class="fw-600" style="color: #2c3e50;">Vehicle</th>
+          <th class="fw-600" style="color: #2c3e50;">Start Date</th>
+          <th class="fw-600" style="color: #2c3e50;">End Date</th>
+          <th class="fw-600" style="color: #2c3e50;">Status</th>
+          <th class="fw-600" style="color: #2c3e50;">Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if bookings.length}}
+          {{#each bookings}}
+            <tr>
+              <td>
+                <span class="fw-500" style="color: #2c3e50;">{{userId.fullName}}</span>
+                <br>
+                <small style="color: #7f8c8d;">{{userId.email}}</small>
+              </td>
+              <td>
+                <span class="fw-500" style="color: #2c3e50;">{{carId.name}}</span>
+                <br>
+                <small style="color: #7f8c8d;">{{carId.brand}}</small>
+              </td>
+              <td>
+                <small>📅 {{startDate}}</small>
+              </td>
+              <td>
+                <small>📅 {{endDate}}</small>
+              </td>
+              <td>
+                {{#ifEquals status "PENDING"}}
+                  <span class="badge" style="background: #fdeaa8; color: #f39c12; padding: 0.5rem 0.75rem; border-radius: 6px;">⏳ Pending</span>
+                {{else ifEquals status "CONFIRMED"}}
+                  <span class="badge" style="background: #d5f4e6; color: #27ae60; padding: 0.5rem 0.75rem; border-radius: 6px;">✓ Confirmed</span>
+                {{else ifEquals status "COMPLETED"}}
+                  <span class="badge" style="background: #d5ecf7; color: #2874a6; padding: 0.5rem 0.75rem; border-radius: 6px;">✔ Completed</span>
+                {{else}}
+                  <span class="badge" style="background: #fadbd8; color: #c0392b; padding: 0.5rem 0.75rem; border-radius: 6px;">✕ {{status}}</span>
+                {{/ifEquals}}
+              </td>
+              <td>
+                <span class="fw-500" style="color: #27ae60;">\${{totalPrice}}</span>
+              </td>
+            </tr>
+          {{/each}}
+        {{else}}
+          <tr>
+            <td colspan="6" class="text-center py-5">
+              <div style="color: #95a5a6;">
+                <i class="bi bi-inbox" style="font-size: 2rem; display: block; margin-bottom: 0.5rem;"></i>
+                <p class="mb-0">No bookings found. <a href="/ui/bookings/new">Create your first booking</a></p>
+              </div>
+            </td>
+          </tr>
+        {{/if}}
+      </tbody>
+    </table>
+  </div>
+</div>

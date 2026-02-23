@@ -1,0 +1,77 @@
+<!-- Header -->
+<div class="mb-4 pb-3 border-bottom">
+  <h1 class="h2 fw-bold" style="color: #2c3e50;">
+    <i class="bi bi-plus-circle me-2" style="color: #27ae60;"></i>Create New Booking
+  </h1>
+  <p class="text-muted small mb-0">Create a new booking for a customer</p>
+</div>
+
+<!-- Form Card -->
+<div class="row justify-content-center">
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm" style="border-radius: 12px;">
+      <div class="card-body p-4">
+        <form method="post" action="/ui/bookings/new">
+          <div class="mb-4">
+            <label class="form-label fw-500" style="color: #2c3e50;">Select Customer</label>
+            <select class="form-select" name="userId" style="border-radius: 8px; border: 1px solid #ddd;" required>
+              <option value="">-- Choose a customer --</option>
+              {{#each users}}
+                <option value="{{_id}}">{{fullName}} ({{email}})</option>
+              {{/each}}
+            </select>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-500" style="color: #2c3e50;">Select Vehicle</label>
+            <select class="form-select" name="carId" style="border-radius: 8px; border: 1px solid #ddd;" required>
+              <option value="">-- Choose a car --</option>
+              {{#each cars}}
+                <option value="{{_id}}">{{name}} - {{brand}}</option>
+              {{/each}}
+            </select>
+          </div>
+
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <label class="form-label fw-500" style="color: #2c3e50;">Start Date</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0">
+                  <i class="bi bi-calendar" style="color: #27ae60;"></i>
+                </span>
+                <input class="form-control border-0 bg-light" name="startDate" type="date" placeholder="YYYY-MM-DD" value="{{form.startDate}}" style="border-radius: 0 8px 8px 0;" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-500" style="color: #2c3e50;">End Date</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-0">
+                  <i class="bi bi-calendar" style="color: #27ae60;"></i>
+                </span>
+                <input class="form-control border-0 bg-light" name="endDate" type="date" placeholder="YYYY-MM-DD" value="{{form.endDate}}" style="border-radius: 0 8px 8px 0;" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-500" style="color: #2c3e50;">Status</label>
+            <select class="form-select" name="status" style="border-radius: 8px; border: 1px solid #ddd;">
+              {{#each statuses}}
+                <option value="{{this}}">{{this}}</option>
+              {{/each}}
+            </select>
+          </div>
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a class="btn" href="/ui/bookings" style="background: #ecf0f1; color: #2c3e50; border: none; border-radius: 8px; padding: 0.6rem 1.5rem;">
+              <i class="bi bi-x-circle me-2"></i>Cancel
+            </a>
+            <button class="btn" type="submit" style="background: #27ae60; color: white; border: none; border-radius: 8px; padding: 0.6rem 1.5rem;">
+              <i class="bi bi-check-circle me-2"></i>Create Booking
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
