@@ -15,13 +15,17 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-// CORS configuration
 const corsOptions = {
-  origin: ['http://localhost:5173', 'http://localhost:3000'],
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://localhost:5173',
+    'https://localhost:3443'
+  ],
   credentials: true,
 };
 app.use(cors(corsOptions));
-
+//app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -30,7 +34,11 @@ app.use(
     secret: process.env.SESSION_SECRET || 'autorent_secret',
     resave: false,
     saveUninitialized: false,
-    cookie: { httpOnly: true },
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax'
+    },
   })
 );
 
